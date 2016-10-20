@@ -16,6 +16,6 @@ def save_countries():
         json.dump(codes, fp, sort_keys=True, indent=4)
 
 def get_countries():
-    codes = open('codes.json', 'r')
+    codes = open('data/codes.json', 'r')
     code = json.load(codes)
     return code

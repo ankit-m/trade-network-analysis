@@ -7,10 +7,10 @@
 import csv
 import json
 
-csvfile = open('dyadic.csv', 'rU');
-countries = open('countries.json', 'r')
+csvfile = open('data/dyadic.csv', 'rU');
+countries = open('data/countries.json', 'r')
 
-def get_year_data(year, maxval):
+def get_year_data(year):
     year = str(year)
     csvfile.seek(0)
     csvfile.readline()
