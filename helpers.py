@@ -1,6 +1,6 @@
 import json
 
-def save_countries():
+def initialize_data():
     countries = {};
     count = 0
     reader = csv.reader(csvfile, delimiter=',')
@@ -10,9 +10,9 @@ def save_countries():
             countries[row[3]] = count
             codes.append(row[3])
             count += 1
-    with open('countries.json', 'w') as fp:
+    with open('data/countries.json', 'w') as fp:
         json.dump(countries, fp, sort_keys=True, indent=4)
-    with open('codes.json', 'w') as fp:
+    with open('data/codes.json', 'w') as fp:
         json.dump(codes, fp, sort_keys=True, indent=4)
 
 def get_countries():

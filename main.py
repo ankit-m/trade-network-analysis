@@ -4,7 +4,7 @@ import csvreader
 import helpers
 
 vertices = helpers.get_countries()
-edges = csvreader.get_year_data(2009)
+edges = csvreader.get_year_data(2009, 500.0)
 
 g = Graph(vertex_attrs={"label": vertices}, edges=edges)
 g.vs["name"] = vertices
