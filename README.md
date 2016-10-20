@@ -12,3 +12,13 @@ World Trade Network Analysis
 **optional*
 
 Refer to websites for download instructions
+
+### Setup
+
+To setup your environment. Type
+
+```shell
+python setup.py
+```
+
+**Note: You must have `data.csv` named file in the `data` folder. This should contain the COW dataset.**
