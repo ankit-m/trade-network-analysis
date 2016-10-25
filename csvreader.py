@@ -9,6 +9,18 @@ import json
 
 csvfile = open('data/data.csv', 'rU');
 countries = open('data/countries.json', 'r')
+gdpfile = open('data/GDP.csv', 'rU')
+
+def getGDP(year):
+    country_names = json.loads(countries.read()).keys()
+    gdp_dict = {}
+    for i in range(5):
+        gdpfile.readline()
+    reader = csv.reader(gdpfile,delimiter=',')
+    for row in reader:
+        if str(row[0]) in country_names:
+            gdp_dict[str(row[0])] = row[year - 1960 + 4]
+    return gdp_dict
 
 def get_year_data(year, maxval):
     year = str(year)
