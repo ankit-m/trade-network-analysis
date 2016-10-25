@@ -23,6 +23,8 @@ def getGDP(year):
     return gdp_dict
 
 def get_year_data(year, maxval):
+    countries = open('data/countries.json', 'r')
+    gdpfile = open('data/GDP.csv', 'rU')
     year = str(year)
     csvfile.seek(0)
     csvfile.readline()         #skip the CSV header
