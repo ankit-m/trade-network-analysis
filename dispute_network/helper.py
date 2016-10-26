@@ -2,7 +2,7 @@
 import csv
 import json
 
-d_file = open('data/MIDA_4.01.csv','r')
+d_file = open('dispute_network/data/MIDA_4.01.csv','r')
 d_file.readline()
 
 def getDisputes(year):
