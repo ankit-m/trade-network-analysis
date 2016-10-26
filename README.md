@@ -23,5 +23,6 @@ python setup.py
 
 #### Relevant papers
 1.) http://www.eief.it/files/2010/10/luca-de-benedictis.pdf
+2.) https://arxiv.org/pdf/1103.1249v3.pdf
 
 **Note: You must have `data.csv` named file in the `data` folder. This should contain the COW dataset.**
