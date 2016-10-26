@@ -21,4 +21,7 @@ To setup your environment. Type
 python setup.py
 ```
 
+#### Relevant papers
+1.) http://www.eief.it/files/2010/10/luca-de-benedictis.pdf
+
 **Note: You must have `data.csv` named file in the `data` folder. This should contain the COW dataset.**
