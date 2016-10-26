@@ -21,6 +21,11 @@ def get_countries():
     code = json.load(codes)
     return code
 
+def get_codes():
+    c = open('data/countries.json', 'r')
+    co = json.load(c)
+    return co
+
 def create_connected_graph(vertices, edges, weights, d):
     g = Graph(vertex_attrs={"label": vertices}, edges=edges, directed=True)
     g.vs["name"] = vertices

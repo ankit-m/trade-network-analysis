@@ -5,11 +5,11 @@ import json
 d_file = open('data/MIDA_4.01.csv','r')
 d_file.readline()
 
-reader = csv.reader(d_file,delimiter=',')
-disputes = []
-for row in reader:
-    if int(row[22]) == 1:
+def getDisputes(year):
+    reader = csv.reader(d_file,delimiter=',')
+    disputes = []
+    for row in reader:
+        if int(row[22]) == 1 or int(row[7]) > year:
         #print row
-        disputes.append(row[0])
-
-print disputes
+            disputes.append(str(row[0]))
+    return disputes

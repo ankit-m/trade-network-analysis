@@ -1,11 +1,11 @@
 import csv
 import json
-import networkx as nx
-codefile = open('data/codes.csv' , 'r')
-disputefile = open('data/MID.csv','r')
+import helper
+codefile = open('dispute_network/data/codes.csv' , 'r')
+disputefile = open('dispute_network/data/MID.csv','r')
 codefile.readline()
 disputefile.readline()
-disputes =  ['4401', '4407', '4408', '4414', '4436', '4483', '4488', '4491', '4492', '4493', '4507', '4508', '4545', '4547', '4548', '4575', '4585', '4588', '4593', '4598', '4599']
+disputes = helper.getDisputes(2010)
 def getCodes():
     codes = {}
     reader = csv.reader(codefile , delimiter = ',')
@@ -32,12 +32,12 @@ def getEdges():
 
 
 
-G = nx.Graph()
-Edgelist = getEdges()
-print Edgelist
+#G = nx.Graph()
+#Edgelist = getEdges()
+#print Edgelist
 
-for i in range(0 , len(Edgelist)):
-    G.add_edge(Edgelist[i][0] , Edgelist[i][1])
+#for i in range(0 , len(Edgelist)):
+#    G.add_edge(Edgelist[i][0] , Edgelist[i][1])
 
 
-nx.write_gml(G , 'dispute.gml')
+#nx.write_gml(G , 'dispute.gml')

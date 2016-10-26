@@ -43,3 +43,4 @@ def get_year_data(year, maxval):
                 edgelist.append((int(codes[row[4]]), int(codes[row[3]])))
                 edgeweights.append(float(row[6]))
     return (edgelist, edgeweights)
+
