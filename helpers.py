@@ -1,4 +1,5 @@
 import json
+from igraph import *
 
 def initialize_data():
     countries = {};
@@ -19,3 +20,11 @@ def get_countries():
     codes = open('data/codes.json', 'r')
     code = json.load(codes)
     return code
+
+def create_connected_graph(vertices, edges, weights, d):
+    g = Graph(vertex_attrs={"label": vertices}, edges=edges, directed=True)
+    g.vs["name"] = vertices
+    g.es["weight"] = weights
+    to_delete_ids = [v.index for v in g.vs if g.degree(v) == 0]
+    g.delete_vertices(to_delete_ids)
+    return g
