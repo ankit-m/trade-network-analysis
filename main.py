@@ -20,10 +20,8 @@ print "Mean Degree: %d" % mean(g.degree())
 # print g.betweenness()
 # print g.closeness()
 
-# print g.neighbors(0, mode="out")
-# print g.es.select(_source=0, _target=1)["weight"]
+gdp.run()
 
-
-g.write_gml('world_trade.gml')
+# g.write_gml('world_trade.gml')
 # layout = g.layout("fr")
 # plot(g, layout = layout)

@@ -11,7 +11,9 @@ csvfile = open('data/data.csv', 'rU');
 countries = open('data/countries.json', 'r')
 gdpfile = open('data/GDP.csv', 'rU')
 
-def getGDP(year):
+def get_gdp(year):
+    gdpfile.seek(0)
+    countries.seek(0)
     country_names = json.loads(countries.read()).keys()
     gdp_dict = {}
     for i in range(5):
@@ -23,9 +25,8 @@ def getGDP(year):
     return gdp_dict
 
 def get_year_data(year, maxval):
-    countries = open('data/countries.json', 'r')
-    gdpfile = open('data/GDP.csv', 'rU')
     year = str(year)
+    countries.seek(0)
     csvfile.seek(0)
     csvfile.readline()         #skip the CSV header
     codes = json.load(countries)
