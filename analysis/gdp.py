@@ -35,8 +35,7 @@ def find_percentage_trade_rich(g, avg, total):
             gdp = g.vs.select(i)['gdp'][0]
             if gdp < avg and v["gdp"] < avg:
                 rich_trade += g.es.select(_source=v.index, _target=i)["weight"][0]
-    percentages.append((rich_trade/total)*100)
-    return percentages
+    return (rich_trade/total)*100
 
 def run():
     for year in range(1960, 2010):
