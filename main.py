@@ -7,7 +7,7 @@ import helpers
 # degree.plot()
 
 vertices = helpers.get_countries()
-edges, weights = csvreader.get_year_data(2009, 500.0)
+edges, weights = csvreader.get_year_data(2009, 5000.0)
 g = helpers.create_connected_graph(vertices, edges, weights, True)
 
 # print g.degree_distribution(bin_width = 1)
@@ -19,8 +19,8 @@ print "Mean Degree: %d" % mean(g.degree())
 #     print i['name'], i.betweenness(), i.closeness()
 # print g.betweenness()
 # print g.closeness()
-
-gdp.run()
+# gdp.run()
+deletion.run(g)
 
 # g.write_gml('world_trade.gml')
 # layout = g.layout("fr")
