@@ -5,12 +5,10 @@ import csvreader
 import helpers
 
 # degree.plot()
-
 vertices = helpers.get_countries()
 edges, weights = csvreader.get_year_data(2009, 5000.0)
 g = helpers.create_connected_graph(vertices, edges, weights, True)
 
-# print g.degree_distribution(bin_width = 1)
 print "Network Diameter: %d" % g.diameter()
 print "Largest Clique Size: %d" % g.omega()
 print "Reciprocity: %d" % g.reciprocity(mode="ratio")
@@ -19,8 +17,8 @@ print "Mean Degree: %d" % mean(g.degree())
 #     print i['name'], i.betweenness(), i.closeness()
 # print g.betweenness()
 # print g.closeness()
-# gdp.run()
-deletion.run(g)
+gdp.run()
+# deletion.run(g)
 
 # g.write_gml('world_trade.gml')
 # layout = g.layout("fr")
