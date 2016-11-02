@@ -32,7 +32,7 @@ def find_percentage_trade_rich(g, avg, total):
     for v in g.vs():
         for i in g.neighbors(v.index, mode="out"):
             gdp = g.vs.select(i)['gdp'][0]
-            if gdp < avg and v["gdp"] < avg:
+            if gdp > avg and v["gdp"] > avg:
                 rich_trade += g.es.select(_source=v.index, _target=i)["weight"][0]
     return (rich_trade/total)*100
 
@@ -51,5 +51,5 @@ def run():
 
     plt.plot(range(1960, 2010), percentages)
     plt.xlabel('Year')
-    plt.ylabel('Percentage of trade between poor nations')
+    plt.ylabel('Percentage of trade between rich nations')
     plt.show()

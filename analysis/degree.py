@@ -14,6 +14,7 @@ def plot():
         g = helpers.create_connected_graph(vertices, edges, weights, True)
         mean_degrees.append(mean(g.degree()))
         years.append(i)
+        print 'ok'
     plt.plot(years, mean_degrees)
     plt.xlabel('Year')
     plt.ylabel('Mean Degree')

@@ -1,1 +1,1 @@
-__all__ = ["degree", "gdp", "deletion"]
+__all__ = ["degree", "gdp", "deletion", "allies"]
