@@ -5,9 +5,23 @@ import csvreader
 import helpers
 import pandas as pd
 
+YEAR = 2009
+THRESHOLD = 5000.0
+
 vertices = helpers.get_countries()
-edges, weights = csvreader.get_year_data(2009, 5000.0)
+edges, weights = csvreader.get_year_data(YEAR, THRESHOLD)
 g = helpers.create_connected_graph(vertices, edges, weights, True)
+
+print '***********************************************'
+print 'Plot Network'
+print '***********************************************'
+
+layout = g.layout("fr")
+plot(g, layout = layout)
+
+print '***********************************************'
+print 'Network Statistics'
+print '***********************************************'
 
 print "Network Diameter: %f" % g.diameter()
 print "Largest Clique Size: %d" % g.omega()
@@ -49,12 +63,20 @@ ax3.set_xlabel('Countries')
 
 plt.show()
 
-# degree.plot()
-# allies.run()
-# gdp.run()
-# deletion.run(g)
+print '***********************************************'
+print 'Network Analysis'
+print '***********************************************'
+
+print '-> Degree Analysis'
+degree.plot()
+
+print '-> GDP Analysis'
+gdp.run()
+
+print '-> Node Deletion'
+deletion.run(g)
+
+print '-> Country Alliance'
+allies.run()
 
 # g.write_gml('world_trade.gml')
-
-# layout = g.layout("fr")
-# plot(g, layout = layout)

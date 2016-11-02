@@ -24,7 +24,7 @@ def assign_gdps(g, gdps):
             v["gdp"] = 0.0
 
 def print_rich_nations(g, avg):
-    print len(g.vs.select(gdp_gt=avg)["label"])
+    print g.vs.select(gdp_gt=avg)["label"]
 
 def find_percentage_trade_rich(g, avg, total):
     percentages = []
@@ -36,8 +36,31 @@ def find_percentage_trade_rich(g, avg, total):
                 rich_trade += g.es.select(_source=v.index, _target=i)["weight"][0]
     return (rich_trade/total)*100
 
+def trade_between_rich_poor(g, avg):
+    rich_nations = []
+    poor_nations = []
+    c = 0
+    for i in g.vs():
+        if i['gdp'] > avg:
+            rich_nations.append(c)
+        else:
+            poor_nations.append(c)
+        c += 1
+    ei = g.es.select(_source_in = rich_nations)
+    ej = g.es.select(_target_in = poor_nations)
+    co = 0.0
+    for q in list(set(ei) & set(ej)):
+        co += q['weight']
+    a = g.es.select(_source_in = poor_nations)
+    b = g.es.select(_target_in = rich_nations)
+    ca = 0.0
+    for p in list(set(a) & set(b)):
+        ca += p['weight']
+    return co/(co + ca)
+
 def run():
     percentages = []
+    trades_rp = []
     for year in range(1960, 2010):
         vertices = helpers.get_countries()
         edges, weights = csvreader.get_year_data(year, 1.0)
@@ -46,9 +69,10 @@ def run():
         avg = get_average_gdp(gdps)
         total = sum(weights)
         assign_gdps(g, gdps)
+        trades_rp.append(trade_between_rich_poor(g, avg))
         percentages.append(find_percentage_trade_rich(g, avg, total))
-        print 'Processing year: %d/%d' % (year, 2008)
-
+        print 'Processing year: %d' % year
+    print "Average Trade Between Rich and Poor from 1960 - 2009: %f" % (sum(trades_rp)/len(trades_rp))
     plt.plot(range(1960, 2010), percentages)
     plt.xlabel('Year')
     plt.ylabel('Percentage of trade between rich nations')
